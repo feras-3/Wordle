@@ -1,0 +1,51 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  text-align: center;
+
+  display: flex;
+}
+
+#wordContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  width: 600px;
+  height: 700px;
+  margin: 0 auto;
+}
+
+.wordRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: stretch;
+
+  width: 510px;
+  height: 110px;
+  aspect-ratio: 1/1;
+  /* border: 3px solid black; */
+  font-size: 64px;
+  text-align: center;
+}
+
+.wordRow > div {
+  /* flex-direction: row; */
+  flex-grow: 1;
+
+  border: 3px solid black;
+}
+
+#toolBar {
+  align-self: flex-start;
+  width: 50px;
+  height: 100px;
+}
+
+#playerkeyboard {
+  order: 3;
+  align-self: flex-end;
+  display: flex;
+}
