@@ -88,7 +88,6 @@ const init = () => {
 const wordInput = (event) => {
   if (alphabet.includes(event.key)) {
     input = event.key
-
     placeLetter(input)
     console.log(row)
     rowupdate()
@@ -104,12 +103,15 @@ const rowupdate = () => {
 const placeLetter = (input) => {
   if (guesses === 5) {
     return
-  } else
-    for (i = 0; i < guesses; i++) {
-      row[guesses] = input
-      console.log(row)
-    }
-  guesses++
+  } else if (input !== undefined) {
+    console.log(guesses)
+
+    console.log(guesses)
+    row[guesses] = input
+    console.log(row)
+
+    guesses++
+  }
 }
 
 //event
