@@ -1,4 +1,4 @@
-let wordList = ['above', 'basic', 'decor']
+let wordList = ['above', 'array', 'basic', 'decor']
 let alphabet = [
   'A',
   'B',
@@ -54,6 +54,7 @@ let alphabet = [
   'z'
 ]
 
+let word
 let row
 let win
 let lose
@@ -86,12 +87,22 @@ const init = () => {
 //   allRows.forEach((letter) => {
 //     letter.textContent = wordInput
 const wordInput = (event) => {
+  console.log(event)
+  if (event.key === 'Backspace') {
+    deleteLetter()
+    rowupdate()
+  }
+  if (event.key === 'Enter') {
+    checkWord()
+    rowupdate()
+  }
   if (alphabet.includes(event.key)) {
     input = event.key
     placeLetter(input)
     console.log(row)
     rowupdate()
   }
+  rowupdate()
 }
 
 const rowupdate = () => {
@@ -114,8 +125,36 @@ const placeLetter = (input) => {
   }
 }
 
+const deleteLetter = () => {
+  console.log(`delete funcion guesses =` + guesses)
+  if (guesses !== 0) {
+    row[guesses] = ''
+    guesses--
+    console.log(`delete funcion row =` + row)
+  }
+  rowupdate()
+}
+
+const wordChosen = () => {
+  word = wordList[Math.floor(Math.random() * wordList.length)]
+  console.log(`the word is ` + word)
+}
+
+const checkWord = () => {
+  if (guesses === 5) {
+    for (i = 0; i < 5; i++) {
+      if (word[i] === row[i]) {
+        console.log('correct letter')
+
+        console.log(row[i])
+        console.log(word[i])
+      }
+    }
+  }
+}
 //event
 document.addEventListener('keyup', wordInput)
 
 //initialize
+wordChosen()
 init()
