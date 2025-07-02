@@ -3,37 +3,43 @@ body {
   margin: 0;
   background-color: white;
   text-align: center;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
 
   display: flex;
 }
 
 #wordContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: repeat(5, 100px);
+  grid-gap: 1px;
 
   width: 600px;
-  height: 700px;
+  height: 600px;
   margin: 0 auto;
 }
 
 .wordRow {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-content: stretch;
+  align-content: stretch; */
 
-  width: 510px;
+  /* width: 510px;
   height: 110px;
-  aspect-ratio: 1/1;
-  /* border: 3px solid black; */
+  aspect-ratio: 1/1; */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  border: 1px solid black;
   font-size: 64px;
   text-align: center;
 }
 
 .wordRow > div {
   /* flex-direction: row; */
-  flex-grow: 1;
+  /* flex-grow: 1; */
 
   border: 3px solid black;
 }

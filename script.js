@@ -64,11 +64,11 @@ let guesses = 0
 
 const messageEl = document.querySelector('#message')
 const row1 = document.querySelectorAll('#row1 > div')
-// const row2 = document.querySelectorAll('#row2 > div')
-// const row3 = document.querySelectorAll('#row3 > div')
-// const row4 = document.querySelectorAll('#row4 > div')
-// const row5 = document.querySelectorAll('#row5 > div')
-// const row6 = document.querySelectorAll('#row6 > div')
+const row2 = document.querySelectorAll('#row2 > div')
+const row3 = document.querySelectorAll('#row3 > div')
+const row4 = document.querySelectorAll('#row4 > div')
+const row5 = document.querySelectorAll('#row5 > div')
+const row6 = document.querySelectorAll('#row6 > div')
 
 const allRows = document.querySelectorAll('.wordRow > div')
 
@@ -83,8 +83,7 @@ const init = () => {
 
 //add index to the method then incen=rement it as the user does more "tries"
 //if (alphabet.includes(wordInput))
-//   allRows.forEach((letter) => {
-//     letter.textContent = wordInput
+
 const wordInput = (event) => {
   //console.log(event)
   if (event.key === 'Backspace') {
@@ -94,20 +93,16 @@ const wordInput = (event) => {
   if (event.key === 'Enter') {
     checkWord()
     rowupdate()
+    reset()
+
+    tries++
   }
   if (alphabet.includes(event.key)) {
     input = event.key
     placeLetter(input)
     console.log(row)
-    rowupdate()
   }
   rowupdate()
-}
-
-const rowupdate = () => {
-  row1.forEach((letter, index) => {
-    letter.textContent = row[index]
-  })
 }
 
 const placeLetter = (input) => {
@@ -129,7 +124,6 @@ const deleteLetter = () => {
   if (guesses !== 0) {
     row[guesses] = ''
     guesses--
-    console.log(`delete funcion row =` + row)
   }
   rowupdate()
 }
@@ -139,6 +133,7 @@ const wordChosen = () => {
   console.log(`the word is ` + word)
 }
 
+//checks if the word is correct and if it contains the right letters
 const checkWord = () => {
   let correctPoint = 0
   if (guesses === 5) {
@@ -156,11 +151,42 @@ const checkWord = () => {
       }
     }
     if (correctPoint === 5) {
-      console.log('Correct Word')
+      console.log('Correct Word!')
     }
   }
 }
 
+//current row to be written in
+const currentRow = () => {
+  switch (tries) {
+    case 0:
+      return row1
+    case 1:
+      return row2
+    case 2:
+      return row3
+    case 3:
+      return row4
+    case 4:
+      return row5
+    case 5:
+      return row6
+  }
+}
+
+const rowupdate = () => {
+  let thisRow = currentRow()
+  thisRow.forEach((letter, index) => {
+    letter.textContent = row[index]
+  })
+}
+
+const reset = () => {
+  for (i = 0; i < row.length; i++) {
+    row[i] = ''
+  }
+  guesses = 0
+}
 //event
 document.addEventListener('keyup', wordInput)
 
