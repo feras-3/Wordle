@@ -79,7 +79,6 @@ const init = () => {
   win = false
   lose = false
   tries = 0
-  console.log('initialized')
 }
 
 //add index to the method then incen=rement it as the user does more "tries"
@@ -87,7 +86,7 @@ const init = () => {
 //   allRows.forEach((letter) => {
 //     letter.textContent = wordInput
 const wordInput = (event) => {
-  console.log(event)
+  //console.log(event)
   if (event.key === 'Backspace') {
     deleteLetter()
     rowupdate()
@@ -115,9 +114,9 @@ const placeLetter = (input) => {
   if (guesses === 5) {
     return
   } else if (input !== undefined) {
-    console.log(guesses)
+    //console.log(guesses)
 
-    console.log(guesses)
+    //console.log(guesses)
     row[guesses] = input
     console.log(row)
 
@@ -141,17 +140,27 @@ const wordChosen = () => {
 }
 
 const checkWord = () => {
+  let correctPoint = 0
   if (guesses === 5) {
     for (i = 0; i < 5; i++) {
       if (word[i] === row[i]) {
-        console.log('correct letter')
+        console.log('correct letter at index=' + i)
+        correctPoint++
+        console.log(`correctpoints = ` + correctPoint)
 
         console.log(row[i])
         console.log(word[i])
+      } else if (word.includes(row[i])) {
+        console.log('right letter at index' + i)
+        console.log(row[i])
       }
+    }
+    if (correctPoint === 5) {
+      console.log('Correct Word')
     }
   }
 }
+
 //event
 document.addEventListener('keyup', wordInput)
 
