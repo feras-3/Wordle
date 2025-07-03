@@ -1,7 +1,7 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: white;
+  background-color: rgb(184, 240, 241);
   text-align: center;
   align-content: center;
   flex-direction: column;
@@ -11,6 +11,7 @@ body {
 }
 
 #wordContainer {
+  background-color:rgb(210, 244, 248);
   display: grid;
   grid-template-rows: repeat(5, 100px);
   grid-gap: 1px;
@@ -50,8 +51,8 @@ body {
   height: 100px;
 }
 
-#playerkeyboard {
-  order: 3;
-  align-self: flex-end;
-  display: flex;
+#playerKeyboard{
+  display: grid;
+  padding-top: 30px;
 }
+

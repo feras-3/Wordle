@@ -1,4 +1,4 @@
-let wordList = ['above', 'array', 'basic', 'decor']
+let wordList = ['above', 'array', 'basic', 'cloth', 'early']
 let alphabet = [
   'A',
   'B',
@@ -60,7 +60,7 @@ let win
 let lose
 let score
 let tries //how many rows needed to win
-let guesses = 0
+let guesses
 
 const messageEl = document.querySelector('#message')
 const row1 = document.querySelectorAll('#row1 > div')
@@ -72,6 +72,8 @@ const row6 = document.querySelectorAll('#row6 > div')
 
 const allRows = document.querySelectorAll('.wordRow > div')
 
+const keyPress = document.querySelectorAll('#playerKeyboard button')
+
 //console.log(allRows)
 
 const init = () => {
@@ -79,9 +81,9 @@ const init = () => {
   win = false
   lose = false
   tries = 0
+  guesses = 0
 }
 
-//add index to the method then incen=rement it as the user does more "tries"
 //if (alphabet.includes(wordInput))
 
 const wordInput = (event) => {
@@ -94,11 +96,10 @@ const wordInput = (event) => {
     checkWord()
     rowupdate()
     reset()
-
-    tries++
   }
   if (alphabet.includes(event.key)) {
-    input = event.key
+    input = event.key.toUpperCase()
+
     placeLetter(input)
     console.log(row)
   }
@@ -120,7 +121,7 @@ const placeLetter = (input) => {
 }
 
 const deleteLetter = () => {
-  console.log(`delete funcion guesses =` + guesses)
+  console.log(`guesses =` + guesses)
   if (guesses !== 0) {
     row[guesses] = ''
     guesses--
@@ -129,30 +130,33 @@ const deleteLetter = () => {
 }
 
 const wordChosen = () => {
-  word = wordList[Math.floor(Math.random() * wordList.length)]
+  word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase()
   console.log(`the word is ` + word)
 }
 
 //checks if the word is correct and if it contains the right letters
 const checkWord = () => {
   let correctPoint = 0
+  // if (tries === 5) {
+  //     return
+  //   }
+  console.log(`number of tries` + tries)
   if (guesses === 5) {
-    for (i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
       if (word[i] === row[i]) {
+        //letter is correct
         console.log('correct letter at index=' + i)
         correctPoint++
         console.log(`correctpoints = ` + correctPoint)
-
-        console.log(row[i])
-        console.log(word[i])
       } else if (word.includes(row[i])) {
-        console.log('right letter at index' + i)
-        console.log(row[i])
+        //letter is right but wrong place
+        console.log('right letter at index ' + i)
       }
     }
     if (correctPoint === 5) {
       console.log('Correct Word!')
     }
+    tries++
   }
 }
 
@@ -187,8 +191,34 @@ const reset = () => {
   }
   guesses = 0
 }
+
+const keyboardInput = (event) => {
+  key = event.target.innerText
+  console.log(key)
+
+  if (key === 'DELETE') {
+    deleteLetter()
+    rowupdate()
+  }
+  if (key === 'ENTER') {
+    checkWord()
+    rowupdate()
+    reset()
+  }
+  if (alphabet.includes(key)) {
+    input = key.toUpperCase()
+
+    placeLetter(input)
+    console.log(row)
+  }
+  rowupdate()
+}
+
 //event
 document.addEventListener('keyup', wordInput)
+keyPress.forEach((button) => {
+  button.addEventListener('click', keyboardInput)
+})
 
 //initialize
 wordChosen()
