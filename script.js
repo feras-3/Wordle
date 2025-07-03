@@ -31,7 +31,6 @@ let wordList = [
   'Adult',
   'Among',
   'Avoid',
-  'Billy',
   'After',
   'Anger',
   'Award',
@@ -541,8 +540,6 @@ let alphabet = [
 
 let word
 let row
-let win
-let lose
 let score
 let tries //how many rows needed to win
 let guesses
@@ -581,6 +578,7 @@ const wordInput = (event) => {
     checkWord()
     rowupdate()
     reset()
+    displayResult()
   }
   if (alphabet.includes(event.key)) {
     input = event.key.toUpperCase()
@@ -621,6 +619,7 @@ const wordChosen = () => {
 //checks if the word is correct and if it contains the right letters
 const checkWord = () => {
   let correctPoint = 0
+  let thisRow = currentRow()
   // if (tries === 5) {
   //     return
   //   }
@@ -630,15 +629,18 @@ const checkWord = () => {
       if (word[i] === row[i]) {
         //letter is correct
         console.log('correct letter at index=' + i)
+        displayResult(i, 'correct')
         correctPoint++
         console.log(`correctpoints = ` + correctPoint)
       } else if (word.includes(row[i])) {
         //letter is right but wrong place
         console.log('right letter at index ' + i)
+        displayResult(i, 'right')
       }
     }
     if (correctPoint === 5) {
       console.log('Correct Word!')
+      displayResult(i,'correct')
     }
     tries++
   }
@@ -662,11 +664,34 @@ const currentRow = () => {
   }
 }
 
+const previousRow = () => {
+  let thisTries = (tries -= 1)
+  switch (thisTries) {
+    case 0:
+      return row1
+    case 1:
+      return row2
+    case 2:
+      return row3
+    case 3:
+      return row4
+    case 4:
+      return row5
+    case 5:
+      return row6
+  }
+}
+
 const rowupdate = () => {
   let thisRow = currentRow()
   thisRow.forEach((letter, index) => {
     letter.textContent = row[index]
   })
+}
+
+const displayResult = (index, color) => {
+  let thisRow = currentRow()
+  thisRow[index].classList.add(color)
 }
 
 const reset = () => {
