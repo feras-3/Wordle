@@ -577,9 +577,6 @@ const wordInput = (event) => {
   if (event.key === 'Enter') {
     checkWord()
     rowupdate()
-    reset()
-    displayResult()
-    rowupdate()
   }
   if (alphabet.includes(event.key)) {
     input = event.key.toUpperCase()
@@ -621,9 +618,6 @@ const wordChosen = () => {
 const checkWord = () => {
   let correctPoint = 0
   let thisRow = currentRow()
-  // if (tries === 5) {
-  //     return
-  //   }
   console.log(`number of tries` + tries)
   if (guesses === 5) {
     for (let i = 0; i < 5; i++) {
@@ -647,6 +641,7 @@ const checkWord = () => {
       console.log('Correct Word!')
     }
     tries++
+    reset()
   }
 }
 
@@ -724,7 +719,6 @@ const keyboardInput = (event) => {
   if (key === 'ENTER') {
     checkWord()
     rowupdate()
-    reset()
   }
   if (alphabet.includes(key)) {
     input = key.toUpperCase()
