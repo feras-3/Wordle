@@ -1,5 +1,7 @@
 # Wordle
 
+[Try it!](https://fwordle.surge.sh/)
+
 ## description
 
 A simple wordle game where the user guesses a word based on the letters of a word inputted before.
