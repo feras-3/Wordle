@@ -642,7 +642,8 @@ const checkWord = () => {
     if (correctPoint === 5) {
       console.log('Correct Word!')
       document.removeEventListener('keydown', wordInput)
-      button.removeEventListener('click', keyboardInput)
+      return
+      // keyPress.removeEventListener('click', keyboardInput)
     }
     tries++
     reset()
@@ -699,10 +700,18 @@ const displayResult = (index, color) => {
 }
 //////////////////////////////////////////////////
 const usedKey = (letter, color) => {
-  console.log(letter)
-  console.log(color)
-  let button = keyPress.innerText
-  for (i = 0; i < keyPress.length; i++) {}
+  keyPress.forEach((button) => {
+    if (button.textContent.toUpperCase() === letter) {
+      if (button.classList.contains('correct')) {
+        return
+      }
+      
+      //removes previous classes
+      button.classList.remove('correct', 'right', 'used')
+
+      button.classList.add(color)
+    }
+  })
 }
 
 const reset = () => {

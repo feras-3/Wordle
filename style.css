@@ -52,6 +52,11 @@ body {
   width: 800px;
 }
 
+.keyboardRow button {
+  height: 50px;
+  width: 70px;
+  /* background-color: rgb(210, 244, 248); */
+}
 .correct {
   background-color: green;
 }
@@ -62,10 +67,4 @@ body {
 
 .used {
   background-color: gray;
-}
-
-.keyboardRow button {
-  height: 50px;
-  width: 70px;
-  background-color: rgb(210, 244, 248);
 }
