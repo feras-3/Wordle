@@ -17,6 +17,47 @@ body {
   font-family: 'Candal', sans-serif;
 }
 
+h1 {
+  font-size: 100px;
+  font-family: 'DynaPuff', system-ui;
+  font-weight: bold;
+
+  margin: 10px auto;
+
+  color: #ede0d4;
+
+  letter-spacing: 15px;
+}
+
+h3 {
+  font-size: 30px;
+  font-family: 'DynaPuff', system-ui;
+  margin: 10px auto;
+
+  color: #ede0d4;
+}
+
+#playButton {
+  padding: 20px 30px;
+  margin: 40px 30px;
+
+
+  
+
+  font-size: 70px;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 10px;
+
+  color: #ede0d4;
+  background-color: #6e995f;
+
+  letter-spacing: 5px;
+
+  text-decoration: none;
+}
+
 .correct {
   background-color: #6e995f;
 }
