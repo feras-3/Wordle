@@ -636,6 +636,7 @@ const checkWord = () => {
         displayResult(i, 'right')
         usedKey(row[i], 'right')
       } else {
+        displayResult(i, 'used')
         usedKey(row[i], 'used')
       }
     }
@@ -705,7 +706,7 @@ const usedKey = (letter, color) => {
       if (button.classList.contains('correct')) {
         return
       }
-      
+
       //removes previous classes
       button.classList.remove('correct', 'right', 'used')
 
