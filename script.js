@@ -555,6 +555,8 @@ const row6 = document.querySelectorAll('#row6 > div')
 const allRows = document.querySelectorAll('.wordRow > div')
 
 const keyPress = document.querySelectorAll('#playerKeyboard button')
+//restart button
+const restartButton = document.getElementById('restart')
 
 //console.log(allRows)
 
@@ -603,7 +605,7 @@ const placeLetter = (input) => {
 
 const deleteLetter = () => {
   console.log(`guesses =` + guesses)
-  if (guesses !== 0) {
+  if (guesses > 0) {
     guesses--
     row[guesses] = ''
   }
@@ -639,6 +641,8 @@ const checkWord = () => {
     }
     if (correctPoint === 5) {
       console.log('Correct Word!')
+      document.removeEventListener('keydown', wordInput)
+      button.removeEventListener('click', keyboardInput)
     }
     tries++
     reset()
@@ -702,9 +706,7 @@ const usedKey = (letter, color) => {
 }
 
 const reset = () => {
-  for (i = 0; i < row.length; i++) {
-    row[i] = ''
-  }
+  row = ['', '', '', '', '']
   guesses = 0
 }
 
@@ -729,11 +731,19 @@ const keyboardInput = (event) => {
   rowupdate()
 }
 
-//event
-document.addEventListener('keyup', wordInput)
+const restartGame = () => {
+  console.log('restarting')
+  location.reload()
+}
+
+//events
+document.addEventListener('keydown', wordInput)
+
 keyPress.forEach((button) => {
   button.addEventListener('click', keyboardInput)
 })
+
+restartButton.addEventListener('click', restartGame)
 
 //initialize
 wordChosen()
