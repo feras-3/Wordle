@@ -569,7 +569,7 @@ const init = () => {
 //if (alphabet.includes(wordInput))
 
 const wordInput = (event) => {
-  //console.log(event)
+  // console.log(event)
   if (event.key === 'Backspace') {
     deleteLetter()
     rowupdate()
@@ -579,6 +579,7 @@ const wordInput = (event) => {
     rowupdate()
     reset()
     displayResult()
+    rowupdate()
   }
   if (alphabet.includes(event.key)) {
     input = event.key.toUpperCase()
@@ -606,8 +607,8 @@ const placeLetter = (input) => {
 const deleteLetter = () => {
   console.log(`guesses =` + guesses)
   if (guesses !== 0) {
-    row[guesses] = ''
     guesses--
+    row[guesses] = ''
   }
 }
 
@@ -631,16 +632,19 @@ const checkWord = () => {
         console.log('correct letter at index=' + i)
         displayResult(i, 'correct')
         correctPoint++
+        usedKey(row[i], 'correct')
         console.log(`correctpoints = ` + correctPoint)
       } else if (word.includes(row[i])) {
         //letter is right but wrong place
         console.log('right letter at index ' + i)
         displayResult(i, 'right')
+        usedKey(row[i], 'right')
+      } else {
+        usedKey(row[i], 'used')
       }
     }
     if (correctPoint === 5) {
       console.log('Correct Word!')
-      displayResult(i,'correct')
     }
     tries++
   }
@@ -692,6 +696,14 @@ const rowupdate = () => {
 const displayResult = (index, color) => {
   let thisRow = currentRow()
   thisRow[index].classList.add(color)
+  console.log(thisRow[index])
+}
+//////////////////////////////////////////////////
+const usedKey = (letter, color) => {
+  console.log(letter)
+  console.log(color)
+  let button = keyPress.innerText
+  for (i = 0; i < keyPress.length; i++) {}
 }
 
 const reset = () => {
