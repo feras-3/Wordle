@@ -7,6 +7,8 @@ body {
   justify-content: center;
 
   display: flex;
+
+  font-family: 'Funnel Display', sans-serif;
 }
 .correct {
   background-color: green;
@@ -36,6 +38,8 @@ body {
   grid-template-columns: repeat(5, 1fr);
 
   font-size: 64px;
+  font-family: inherit;
+
   text-align: center;
 }
 
@@ -75,7 +79,8 @@ body {
   width: 80px;
 
   font-size: 15px;
-  font-weight: bold;
+  font-family: 'DynaPuff', system-ui;
+
   border: 2px solid rgb(204, 204, 204);
   border-radius: 5px;
   /* background: rgb(238, 238, 238); */
@@ -91,7 +96,8 @@ body {
   margin: 20px auto;
 
   font-size: large;
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-family: 'DynaPuff', system-ui;
 
   background-color: #ddd;
   border: none;
