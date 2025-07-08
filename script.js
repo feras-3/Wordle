@@ -549,8 +549,6 @@ const row4 = document.querySelectorAll('#row4 > div')
 const row5 = document.querySelectorAll('#row5 > div')
 const row6 = document.querySelectorAll('#row6 > div')
 
-const allRows = document.querySelectorAll('.wordRow > div')
-
 const keyPress = document.querySelectorAll('#playerKeyboard button')
 
 //restart button
@@ -595,6 +593,7 @@ const deleteLetter = () => {
   }
 }
 
+//the random word function is from https://stackoverflow.com/questions/16065579/generate-a-random-word-from-an-array-and-then-print-it-to-the-console-log-in-a-f
 const wordChosen = () => {
   word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase()
   console.log('The word is ' + word)
@@ -646,24 +645,6 @@ const currentRow = () => {
   }
 }
 
-const previousRow = () => {
-  let thisTries = (tries -= 1)
-  switch (thisTries) {
-    case 0:
-      return row1
-    case 1:
-      return row2
-    case 2:
-      return row3
-    case 3:
-      return row4
-    case 4:
-      return row5
-    case 5:
-      return row6
-  }
-}
-
 const rowupdate = () => {
   let thisRow = currentRow()
   thisRow.forEach((letter, index) => {
@@ -675,6 +656,7 @@ const displayResult = (index, color) => {
   let thisRow = currentRow()
   thisRow[index].classList.add(color)
 }
+
 //////////////////////////////////////////////////
 const usedKey = (letter, color) => {
   keyPress.forEach((button) => {
