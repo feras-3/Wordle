@@ -596,7 +596,6 @@ const deleteLetter = () => {
 //the random word function is from https://stackoverflow.com/questions/16065579/generate-a-random-word-from-an-array-and-then-print-it-to-the-console-log-in-a-f
 const wordChosen = () => {
   word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase()
-  console.log('The word is ' + word)
 }
 
 //checks if the word is correct and if it contains the right letters
@@ -622,6 +621,7 @@ const checkWord = () => {
       document.removeEventListener('keydown', wordInput)
       return
     }
+
     tries++
     reset()
   }
@@ -698,7 +698,6 @@ const keyboardInput = (event) => {
 }
 
 const restartGame = () => {
-  console.log('restarting')
   location.reload()
 }
 

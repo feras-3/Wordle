@@ -161,3 +161,67 @@ h3 {
 
   cursor: pointer;
 }
+@media only screen and (max-width: 500px) {
+  body {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 15vw;
+  }
+
+  h3 {
+    font-size: 7vw;
+  }
+
+  #playButton {
+    width: 70%;
+  }
+
+  #wordContainer {
+    width: 95%;
+    height: auto;
+  }
+
+  .wordRow {
+    font-size: 6vw;
+  }
+
+  .wordRow > div {
+    min-height: 12vw;
+  }
+
+  #playerKeyboard {
+    width: 100%;
+    padding-top: 10px;
+    gap: 3px;
+    margin: 10px auto;
+  }
+
+  .keyboardRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3px;
+  }
+
+  .keyboardRow button {
+    width: 7vw;
+    height: 7vw;
+    min-width: 32px;
+    min-height: 32px;
+    font-size: 4vw;
+  }
+
+  .keyboardRow button.wide {
+    width: 15vw;
+    font-size: 3vw;
+  }
+
+  #restart {
+    font-size: 16px;
+    padding: 8px 12px;
+    margin: 10px auto;
+  }
+}
