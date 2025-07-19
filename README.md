@@ -4,7 +4,7 @@
 
 ## Description
 
-A simple wordle game where the user guesses a word based on the letters of a word inputted before.
+A simple browser-based word guessing game inspired by the popular New York times game Wordle. The objective is to guess a hidden 5-letter word within 5 attempts. After each guess, feedback is provided through color-coded hints that indicate the accuracy of the guessed letters.
 
 ## Technologies Used
 
