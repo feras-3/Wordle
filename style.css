@@ -161,6 +161,26 @@ h3 {
 
   cursor: pointer;
 }
+#endScreen {
+  position: fixed;
+  background-color: rgba(228, 191, 151, 0.85);
+  font-size: 2rem;
+  color: #302219;
+
+  display: none;
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 15px;
+  padding: 15px;
+}
+.highlightWord {
+  font-size: 5rem;
+  color: #6e995f;
+}
+
 @media only screen and (max-width: 500px) {
   body {
     width: 100%;

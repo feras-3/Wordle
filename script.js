@@ -536,7 +536,6 @@ let alphabet = [
   'y',
   'z'
 ]
-
 let word
 let row
 let tries //how many rows needed to win
@@ -618,12 +617,17 @@ const checkWord = () => {
       }
     }
     if (correctPoint === 5) {
+      showEndScreen(true)
       document.removeEventListener('keydown', wordInput)
       return
     }
 
     tries++
     reset()
+
+    if (tries === 6) {
+      showEndScreen(false)
+    }
   }
 }
 
@@ -647,6 +651,9 @@ const currentRow = () => {
 
 const rowupdate = () => {
   let thisRow = currentRow()
+  if (!thisRow) {
+    return
+  }
   thisRow.forEach((letter, index) => {
     letter.textContent = row[index]
   })
@@ -699,6 +706,24 @@ const keyboardInput = (event) => {
 
 const restartGame = () => {
   location.reload()
+}
+
+const showEndScreen = (win) => {
+  const endScreen = document.getElementById('endScreen')
+  const resultMessage = document.getElementById('result')
+
+  endScreen.style.display = 'flex'
+
+  if (win) {
+    resultMessage.innerHTML = `Good Job! it only took you <br/><span class="highlightWord">${tries}</span> tries`
+  } else {
+    resultMessage.innerHTML = `Nice Try! The correct word was:<br/><span class="highlightWord">${word}</span>`
+  }
+
+  document.removeEventListener('keydown', wordInput)
+  keyPress.forEach((button) => {
+    button.removeEventListener('click', keyboardInput)
+  })
 }
 
 //events
