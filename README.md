@@ -51,6 +51,4 @@ const wordInput = (event) => {
 }
 ```
 
-## wireframe
 
-![image](/img/Project1_wireframe.png)
